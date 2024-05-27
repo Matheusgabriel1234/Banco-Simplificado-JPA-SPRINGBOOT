@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.TestePicpay.Domain.User;
 import com.example.TestePicpay.Domain.UserType;
+import com.example.TestePicpay.dto.UserDTO;
 import com.example.TestePicpay.repositories.UserRepository;
 
 @Service
@@ -42,6 +43,11 @@ public void validateTransition(User sender, BigDecimal amount) throws Exception 
 	}
 }
 
+public User createUser(UserDTO newUser) {
+	User obj = new User(newUser);
+	this.saveUser(obj);
+	return obj;
+}
 
 public void saveUser(User user) {
 	this.userRepo.save(user);

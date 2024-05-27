@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.example.TestePicpay.dto.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,7 +31,7 @@ private Long id;
 private String firstName;
 private String secondName;
 @Column(unique = true)
-private String cpf;
+private String document;
 @Column(unique = true)
 private String email;
 private String password;
@@ -41,13 +43,23 @@ public User() {
 	
 }
 
-public User(Long id, String firstName, String secondName, String cpf, String email, String password, BigDecimal balance,
+public User(UserDTO userdto) {
+	this.firstName = userdto.firstName();
+    this.secondName = userdto.secondName();
+    this.document = userdto.document();
+    this.balance = userdto.balance();
+    this.email = userdto.email();
+    this.password = userdto.password();
+    this.userType = userdto.userType();
+}
+
+public User(Long id, String firstName, String secondName, String document, String email, String password, BigDecimal balance,
 		UserType userType) {
 	
 	this.id = id;
 	this.firstName = firstName;
 	this.secondName = secondName;
-	this.cpf = cpf;
+	this.document = document;
 	this.email = email;
 	this.password = password;
 	this.balance = balance;
@@ -78,12 +90,12 @@ public void setSecondName(String secondName) {
 	this.secondName = secondName;
 }
 
-public String getCpf() {
-	return cpf;
+public String getdocument() {
+	return document;
 }
 
-public void setCpf(String cpf) {
-	this.cpf = cpf;
+public void setdocument(String document) {
+	this.document = document;
 }
 
 public String getEmail() {
