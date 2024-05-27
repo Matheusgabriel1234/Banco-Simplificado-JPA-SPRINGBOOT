@@ -1,5 +1,11 @@
 package com.example.TestePicpay.repositories;
 
-public interface TransictionRepository {
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.TestePicpay.Domain.Transaction;
+
+public interface TransictionRepository extends JpaRepository<Transaction, Long>{
+
+	
 }
